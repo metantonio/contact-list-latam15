@@ -4,6 +4,10 @@ Build web applications using React.js for the front-end
 
 - Use of .env file.
 
+### Gitpod:
+
+- Node Version: v16.15.0
+
 ### Front-End Manual Installation:
 
 - Make sure you are using node version 14+.
