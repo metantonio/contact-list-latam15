@@ -10,7 +10,7 @@ ports:
   - port: 5432
     onOpen: ignore
 tasks:
-  - before: nvm install 16
+  - before: nvm install 16.15.0
   - init: npm install
   - command: >
       cat .env.example >> .env &&
