@@ -13,7 +13,7 @@ export const Single = props => {
 			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
 			<img src={rigoImageUrl} />
 			<hr className="my-4" />
-
+			<p>Variable from Flux: {store.exampleObj.msg}</p>
 			<Link to="/">
 				<span className="btn btn-primary btn-lg" href="#" role="button">
 					Back home
