@@ -1,8 +1,7 @@
 # WebApp boilerplate with React JS and Flask API
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+Build web applications using React.js for the front-end
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
 - Use of .env file.
 
 ### Front-End Manual Installation:
