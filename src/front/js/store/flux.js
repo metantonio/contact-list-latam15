@@ -1,5 +1,6 @@
 import { exampleStore, exampleActions } from "./exampleStore.js"; //destructured import
 import { usuarioStore, usuarioActions } from "./usuario.js";
+import { contactStore, contactActions } from "./contact.js";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -19,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			...exampleStore, //this brings here the variables exampleArray and exampleObject
 			...usuarioStore,
+			...contactStore,
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -43,7 +45,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ ...store, demo: demo })
 			},
 			...exampleActions(getStore, getActions, setStore), //this will brings here the function exampleFunction, and it will be able to use store's states and actions
-			...usuarioActions(getStore, getActions, setStore)
+			...usuarioActions(getStore, getActions, setStore),
+			...contactActions(getStore, getActions, setStore),
+
 		}
 	};
 };
