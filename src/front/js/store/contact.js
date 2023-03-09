@@ -19,5 +19,20 @@ export function contactActions(getStore, getActions, setStore) {
 
             return store.listaContactos;
         },
+        deleteContact: (indice) => {
+            let store = getStore()
+            let arrTemp = store.listaContactos.filter((item, index) => {
+                return index != indice
+            })
+            setStore({ ...store, listaContactos: arrTemp })
+        },
+        editContact: (indice, nombre) => {
+            let store = getStore()
+            let arrTemp = store.listaContactos.slice()
+            arrTemp[indice]["full_name"] = nombre
+
+            setStore({ ...store, listaContactos: arrTemp })
+
+        }
     }
 }

@@ -29,6 +29,9 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			state.actions.exampleFunction(); // <---- calling this function from the flux.js actions
+			//Tablas de sistema que que usa la app
+			//Aplicar un cierre de sesión por seguridad
+
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
