@@ -20,6 +20,25 @@ const AddContact = () => {
         <button type="button" onClick={() => {
             actions.addContact(data)
         }}>Agregar Contacto a la Agenda</button>
+
+        <br />
+        <button onClick={async () => {
+            let { respuestaJson, response } = await actions.useFetch("/apis/fake/contact/",
+                {
+                    full_name: data.full_name,
+                    email: data.email,
+                    agenda_slug: "agenda_de_antonio",
+                    address: "47568 NW 34ST, 33434 FL, USA",
+                    phone: data.phone
+                },
+                "POST"
+            )
+            if (!response.ok) {
+                alert("No se registró el contacto")
+                return
+            }
+            console.log("Contacto creado: \n", respuestaJson)
+        }}>Boton con fetch</button>
     </div>)
 }
 

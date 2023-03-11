@@ -5,8 +5,22 @@ import { Link } from "react-router-dom";
 const Contactos = () => {
     const { store, actions } = useContext(Context)
     const [nombre, setNombre] = useState("")
+    const [lista, setLista] = useState(store.listaContactos)
+    const [refresh, setRefresh] = useState(false)
+    const [estadoTemporal, setEstadotemporal] = useState({})
 
-    useEffect(() => { }, [store.listaContactos, nombre])
+    useEffect(() => {
+        let funcionCarga = async () => {
+            let { respuestaJson, response } = await actions.useFetch("/apis/fake/contact/agenda/agenda_de_antonio", null)
+            console.log(respuestaJson)
+            setLista(respuestaJson)
+        }
+        funcionCarga() //aquí llamo a la función asíncrono
+
+    }, [refresh])
+
+    useEffect(() => { }, [lista, nombre])
+
 
     return (<div>
         Contactos
@@ -16,8 +30,8 @@ const Contactos = () => {
         <input type="text" placeholder="nombreNuevo" onChange={(e) => setNombre(e.target.value)} />
         <br />
         <ul>
-            {store.listaContactos && store.listaContactos.length > 0 ? <>
-                {store.listaContactos.map((item, index) => {
+            {lista && lista.length > 0 ? <>
+                {lista.map((item, index) => {
                     return (
                         <li key={index}>
                             {item.full_name} - {item.email} - {item.phone}

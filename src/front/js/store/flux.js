@@ -47,6 +47,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 			...exampleActions(getStore, getActions, setStore), //this will brings here the function exampleFunction, and it will be able to use store's states and actions
 			...usuarioActions(getStore, getActions, setStore),
 			...contactActions(getStore, getActions, setStore),
+			useFetch: async (endpoint, body, method = "GET") => {
+				let url = "https://assets.breatheco.de" + endpoint
+				let response = await fetch(url, {
+					method: method,
+					headers: { "Content-Type": "application/json" },
+					body: body ? JSON.stringify(body) : null
+				})
+
+				let respuestaJson = await response.json()
+
+				return { respuestaJson, response }
+
+			},
+			getFetch: async (endpoint) => {
+				let url = "https://assets.breatheco.de" + endpoint
+				let response = await fetch(url)
+
+				let respuestaJson = await response.json()
+				//console.log(respuestaJson)
+				return { respuestaJson, response }
+			}
 
 		}
 	};
